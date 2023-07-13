@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Happy Birthday Wishes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 500px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-top: 0;
+            animation: fadeInDown 1s ease;
+        }
+        
+        p {
+            color: #777;
+            margin-bottom: 15px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .heart-music {
+            margin-top: 20px;
+            animation: heartBeat 1.5s infinite;
+        }
+        
+        .game-container {
+            margin-top: 30px;
+            animation: fadeIn 1s ease;
+        }
+        
+        .game-button {
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .game-button:hover {
+            background-color: #45a049;
+        }
+        
+        .animation-text {
+            font-size: 20px;
+            font-weight: bold;
+            animation: bounceIn 1s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes heartBeat {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes bounceIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You, for your Kind Wishes for My Birthday. 😊</h1>
+        
+        <div class="heart-music">
+            <audio src="peaceful_music.mp3" autoplay loop></audio>
+            <p>Enter only the Number for Options after you enter Your WhatsApp Phone Number</p>
+        </div>
+        
+        <div class="game-container">
+            <button class="game-button" onclick="redirectToWhatsApp()">Click Me</button>
+        </div>
+    </div>
+    
+    <script>
+        function redirectToWhatsApp() {
+            var phoneNumber = prompt("Please enter your phone number:");
+            
+            if (phoneNumber) {
+                var name = prompt("Please enter your name:");
+                var relation = prompt("What is your relation with Debojeet?\n1. Family Member\n2. Friend");
+                
+                var message = "";
+                
+                if (relation === "1") {
+                    var familyRelation = prompt("Select your family relation with Debojeet:\n1. Maa\n2. Papa\n3. Mani\n4. Tiya\n5. Dadai\n6. Bada Mama\n7. Chota Mama\n8. Badi Mami");
+                    var relationText = "";
+                    
+                    switch (familyRelation) {
+                        case "1":
+                            relationText = "Maa";
+                            break;
+                        case "2":
+                            relationText = "Papa";
+                            break;
+                        case "3":
+                            relationText = "Mani";
+                            break;
+                        case "4":
+                            relationText = "Tiya";
+                            break;
+                        case "5":
+                            relationText = "Dadai";
+                            break;
+                        case "6":
+                            relationText = "Bada Mama";
+                            break;
+                        case "7":
+                            relationText = "Chota Mama";
+                            break;
+                        case "8":
+                            relationText = "Badi Mami";
+                            break;
+                        default:
+                            relationText = "Family Member";
+                            break;
+                    }
+                    
+                    message = "Dear " + relationText + ",\n\nI wanted to express my heartfelt gratitude to you for the wonderful birthday wishes. Even though I'm far from home, your love and support have made my special day even more memorable.\n\nYour kind words and thoughtful messages have touched my heart, and I truly appreciate the time you took to wish me a happy birthday. Your love and blessings mean the world to me.\n\nOnce again, thank you for making my birthday extra special with your warm wishes. I'm incredibly fortunate to have such an amazing " + relationText + " like you.\n\nWith love,\nDebojeet";
+                } else {
+                    message = "Dear " + name + ",\n\nI wanted to express my heartfelt gratitude to you for the wonderful birthday wishes. Even though I'm far from home, your love and support have made my special day even more memorable.\n\nYour kind words and thoughtful messages have touched my heart, and I truly appreciate the time you took to wish me a happy birthday. Your love and blessings mean the world to me.\n\nOnce again, thank you for making my birthday extra special with your warm wishes. I'm incredibly fortunate to have such amazing friends like you.\n\nWith love,\nDebojeet";
+                }
+                
+                var url = "https://wa.me/+91" + encodeURIComponent(phoneNumber) + "?text=" + encodeURIComponent(message);
+                window.location.href = url;
+            }
+        }
+    </script>
+</body>
+</html>
